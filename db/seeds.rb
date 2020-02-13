@@ -5,3 +5,27 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+require 'json'
+require 'open-uri'
+require 'faker'
+
+url = 'https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list'
+
+ingredients_serialized = open(url).read
+
+ingredients = JSON.parse(ingredients_serialized)["drinks"]
+
+ingredients.each do |ingredient|
+  Ingredient.create(name: ingredient["strIngredient1"])
+end
+
+# Cocktail.new(name: "Bloddy Mary")
+# Cocktail.new(name: "Sky coke")
+# Cocktail.new(name: "Gazpacho Peel")
+# Cocktail.new(name: "Vodka Martini (spoon)")
+# Cocktail.new(name: "Cointreau pineaple")
+
+# dose = Dose.create(description: "6cl", cocktail_id: , ingredient_id:)
+
+# Faker::Food.measurement #=> "1/4 tablespoon"
