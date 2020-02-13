@@ -1,9 +1,14 @@
-<h2>New Cocktail</h2>
+<div class="container">
 
-<%= simple_form_for @cocktail do |f| %>
-<%= f.input :name %>
-<%= f.submit %>
-<% end %>
-<br>
-<br>
-<%= link_to "Back to All Cocktails", cocktails_path %>
+  <h2 class="text-center m-3">New Cocktail</h2>
+
+  <%= simple_form_for @cocktail do |f| %>
+  <%= f.input :name %>
+  <%= f.submit %>
+  <% end %>
+  <br>
+  <br>
+  <%= link_to "Back to All Cocktails", cocktails_path %>
+
+</div>
+
