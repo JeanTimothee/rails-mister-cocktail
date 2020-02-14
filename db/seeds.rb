@@ -8,7 +8,7 @@
 
 require 'json'
 require 'open-uri'
-require 'faker'
+
 
 url = 'https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list'
 
@@ -17,7 +17,8 @@ ingredients_serialized = open(url).read
 ingredients = JSON.parse(ingredients_serialized)["drinks"]
 
 ingredients.each do |ingredient|
-  Ingredient.create(name: ingredient["strIngredient1"])
+  t = Ingredient.new(name: ingredient["strIngredient1"])
+  t.save
 end
 
 # Cocktail.new(name: "Bloddy Mary")
