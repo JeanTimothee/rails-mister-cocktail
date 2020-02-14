@@ -1,10 +1,11 @@
 <div class="container">
   <h1 class="text-center m-5">Index Cocktail</h1>
 
-  <ul class="list-group"><% @cocktails.each do |cocktail| %>
-    <li class="list-group-item list-group-item-action"><%= link_to cocktail.name, cocktail_path(cocktail) %></li>
+<div class="row">
+  <% @cocktails.each do |cocktail| %>
+    <div class="card col-sm-3"><%= link_to cocktail.name, cocktail_path(cocktail) %></div>
     <% end %>
-  </ul>
+</div>
 
   <div class="border border-primary rounded d-flex justify-content-center mx-auto my-5 py-2" style="width:150px;">
     <%= link_to "Add a cocktail!", new_cocktail_path %>
