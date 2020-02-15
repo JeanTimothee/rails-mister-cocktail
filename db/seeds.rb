@@ -21,11 +21,11 @@ ingredients.each do |ingredient|
   t.save
 end
 
-# Cocktail.new(name: "Bloddy Mary")
+
 # Cocktail.new(name: "Sky coke")
 # Cocktail.new(name: "Gazpacho Peel")
 # Cocktail.new(name: "Vodka Martini (spoon)")
-# Cocktail.new(name: "Cointreau pineaple")
+# Cocktail.new(name: "Cointreau ananas")
 
 # dose = Dose.create(description: "6cl", cocktail_id: , ingredient_id:)
 

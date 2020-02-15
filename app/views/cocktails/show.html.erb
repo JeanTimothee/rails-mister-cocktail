@@ -1,16 +1,18 @@
 <div class="container">
   <h1 class="text-center m-3">Show cocktail</h1>
   <br>
-  <h2><%= @cocktail.name %></h2>
-  <div class="row"><% @cocktail.doses.each do |dose| %>
-    <div class="card col-sm-6"><%= dose.ingredient.name %>: <%= dose.description %> <%= link_to 'delete', dose_path(dose), method: :delete %></div>
-    <% end %>
+  <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path @cocktail.photo.key, height: 300, width: 400, crop: :fill %>')">
+    <h2><%= @cocktail.name %></h2>
+    <div class="row"><% @cocktail.doses.each do |dose| %>
+      <div class="card"><%= dose.ingredient.name %>: <%= dose.description %> <%= link_to 'delete', dose_path(dose), method: :delete %></div>
+      <% end %>
+    </div>
   </div>
 
   <%= simple_form_for [@cocktail, @dose] do |f| %>
-    <%#= f.association :ingredient %>
     <div class="form-inputs">
-      <%= f.input :ingredient, collection: Ingredient.all, include_hidden: false %>
+      <%= f.association :ingredient %>
+      <%#= f.input :ingredient, collection: Ingredient.all, input_html: { class: "multiple-select", multiple: true },include_hidden: false %>
       <%= f.input :description %>
     </div>
     <%= f.submit %>
