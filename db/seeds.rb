@@ -12,11 +12,19 @@ puts "---Destroying all Ingredients---"
 Ingredient.destroy_all
 puts "-----Ingredients destroyed!-----"
 puts ""
-puts "------Creating Ingredients------"
 
+puts "------Creating Ingredients------"
 url = "https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list"
 ingredients = JSON.parse(open(url).read)
 ingredients["drinks"].each { |ingredient| Ingredient.create(name: ingredient["strIngredient1"])}
+puts "----#{Ingredient.all.count} Ingredients Created!----"
 
-puts "----#{Ingredient.all.count} Ingredients created!----"
+puts "----Destroying all Cocktails----"
+Cocktail.destroy_all
+puts "------Cocktails Destroyed!------"
+puts ""
 
+puts "-------Creating Cocktails-------"
+cocktail_names = ["Bloody Mary", "Gazpacho Peel", "Mauresque", "Vodka Martini", "Ti'punch"]
+cocktail_names.each { |cocktail_name| Cocktail.create(name: cocktail_name) }
+puts "-------#{Cocktail.all.count} Cocktails Created!------"
